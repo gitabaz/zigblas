@@ -50,9 +50,9 @@ pub fn gemm(comptime T: type, order: Layout, transA: Transpose, transB: Transpos
     } else if (T == f64) {
         c.cblas_dgemm(order, transA, transB, num_rows_opA, num_cols_opB, num_cols_opA, alpha, A.data.ptr, lda, B.data.ptr, ldb, beta, C.data.ptr, ldc);
     } else if (T == Complex(f32)) {
-        c.cblas_cgemm(order, transA, transB, num_rows_opA, num_cols_opB, num_cols_opA, &.{ alpha.re, alpha.im }, A.data.ptr, lda, B.data.ptr, ldb, &.{ beta.re, beta.im }, C.data.ptr, ldc);
+        c.cblas_cgemm(order, transA, transB, num_rows_opA, num_cols_opB, num_cols_opA, &alpha, A.data.ptr, lda, B.data.ptr, ldb, &beta, C.data.ptr, ldc);
     } else if (T == Complex(f64)) {
-        c.cblas_zgemm(order, transA, transB, num_rows_opA, num_cols_opB, num_cols_opA, &.{ alpha.re, alpha.im }, A.data.ptr, lda, B.data.ptr, ldb, &.{ beta.re, beta.im }, C.data.ptr, ldc);
+        c.cblas_zgemm(order, transA, transB, num_rows_opA, num_cols_opB, num_cols_opA, &alpha, A.data.ptr, lda, B.data.ptr, ldb, &beta, C.data.ptr, ldc);
     }
 }
 

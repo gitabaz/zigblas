@@ -39,15 +39,15 @@ define CBLAS_INDEX size_t
 ~~CBLAS_DIAG~~
 ~~CBLAS_SIDE~~
 	
-cblas_sdsdot
-cblas_dsdot
-cblas_sdot
-cblas_ddot
+~~cblas_sdsdot~~
+~~cblas_dsdot~~
+~~cblas_sdot~~
+~~cblas_ddot~~
 
-cblas_cdotu
-cblas_cdotc
-cblas_zdotu
-cblas_zdotc
+~~cblas_cdotu~~
+~~cblas_cdotc~~
+~~cblas_zdotu~~
+~~cblas_zdotc~~
 
 cblas_cdotu_sub
 cblas_cdotc_sub
@@ -64,10 +64,10 @@ cblas_dsum
 cblas_scsum
 cblas_dzsum
 
-float  cblas_snrm2
-double cblas_dnrm2
-float  cblas_scnrm2
-double cblas_dznrm2
+~~cblas_snrm2~~
+~~cblas_dnrm2~~
+~~cblas_scnrm2~~
+~~cblas_dznrm2~~
 
 CBLAS_INDEX cblas_isamax
 CBLAS_INDEX cblas_idamax

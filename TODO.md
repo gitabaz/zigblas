@@ -1,18 +1,19 @@
+https://github.com/xianyi/OpenBLAS/blob/develop/cblas.h
 /*Set the number of threads on runtime.*/
-openblas_set_num_threads
-goto_set_num_threads
+~~openblas_set_num_threads~~
+~~goto_set_num_threads~~
 
 /*Get the number of threads on runtime.*/
-openblas_get_num_threads
+~~openblas_get_num_threads~~
 
 /*Get the number of physical processors (cores).*/
-openblas_get_num_procs
+~~openblas_get_num_procs~~
 
 /*Get the build configure on runtime.*/
-openblas_get_config
+~~openblas_get_config~~
 
 /*Get the CPU corename on runtime.*/
-openblas_get_corename
+~~openblas_get_corename~~
 
 ifdef OPENBLAS_OS_LINUX
 /* Sets thread affinity for OpenBLAS threads. `thread_idx` is in [0, openblas_get_num_threads()-1]. */
@@ -20,7 +21,7 @@ openblas_setaffinity
 endif
 
 /* Get the parallelization type which is used by OpenBLAS */
-int openblas_get_parallel(void);
+~~openblas_get_parallel~~
 /* OpenBLAS is compiled for sequential use  */
 define OPENBLAS_SEQUENTIAL  0
 /* OpenBLAS is compiled using normal threading model */
@@ -29,23 +30,14 @@ define OPENBLAS_THREAD  1
 define OPENBLAS_OPENMP 2
 
 
-/*
- * Since all of GotoBlas was written without const,
- * we disable it at build time.
- */
-ifndef OPENBLAS_CONST
- define OPENBLAS_CONST const
-endif
-
-
 define CBLAS_INDEX size_t
 
-typedef enum CBLAS_ORDER     {CblasRowMajor=101, CblasColMajor=102} CBLAS_ORDER;
-typedef enum CBLAS_TRANSPOSE {CblasNoTrans=111, CblasTrans=112, CblasConjTrans=113, CblasConjNoTrans=114} CBLAS_TRANSPOSE;
-typedef enum CBLAS_UPLO      {CblasUpper=121, CblasLower=122} CBLAS_UPLO;
-typedef enum CBLAS_DIAG      {CblasNonUnit=131, CblasUnit=132} CBLAS_DIAG;
-typedef enum CBLAS_SIDE      {CblasLeft=141, CblasRight=142} CBLAS_SIDE;
-typedef CBLAS_ORDER CBLAS_LAYOUT;
+~~CBLAS_ORDER~~
+~~CBLAS_TRANSPOSE~~
+~~CBLAS_LAYOUT~~
+~~CBLAS_UPLO~~
+~~CBLAS_DIAG~~
+~~CBLAS_SIDE~~
 	
 cblas_sdsdot
 cblas_dsdot
@@ -62,10 +54,10 @@ cblas_cdotc_sub
 cblas_zdotu_sub
 cblas_zdotc_sub
 
-cblas_sasum
-cblas_dasum
-cblas_scasum
-cblas_dzasum
+~~cblas_sasum~~
+~~cblas_dasum~~
+~~cblas_scasum~~
+~~cblas_dzasum~~
 
 cblas_ssum
 cblas_dsum
@@ -97,10 +89,10 @@ CBLAS_INDEX cblas_idmin
 CBLAS_INDEX cblas_icmin
 CBLAS_INDEX cblas_izmin
 
-cblas_saxpy
-cblas_daxpy
-cblas_caxpy
-cblas_zaxpy
+~~cblas_saxpy~~
+~~cblas_daxpy~~
+~~cblas_caxpy~~
+~~cblas_zaxpy~~
 
 cblas_scopy
 cblas_dcopy

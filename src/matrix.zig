@@ -36,6 +36,9 @@ pub fn Matrix(comptime T: type) type {
         pub fn set(self: Self, i: usize, j: usize, val: T) void {
             self.data[i * self.ncols + j] = val;
         }
+        pub fn get1(self: Self, i: usize) T {
+            return self.data[i];
+        }
         pub fn get(self: Self, i: usize, j: usize) T {
             return self.data[i * self.ncols + j];
         }

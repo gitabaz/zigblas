@@ -15,6 +15,13 @@ pub fn main() !void {
     var matC = try MatrixF64.initWithZeroes(2, 2, allocator);
     defer matC.free();
 
+    zigblas.setNumThreads(4);
+    print("Num threads: {}\n", .{zigblas.getNumThreads()});
+    print("Num procs: {}\n", .{zigblas.getNumProcs()});
+    print("Config: {}\n", .{zigblas.getConfig()});
+    print("Core Name: {}\n", .{zigblas.getCoreName()});
+    print("Parallel: {}\n", .{zigblas.getParallel()});
+
     print("Matrix A:\n", .{});
     printMatrix(matA);
     print("Matrix B:\n", .{});

@@ -25,16 +25,15 @@ pub fn axpy(comptime T: type, a: T, x: *matrix.Matrix(T), y: *matrix.Matrix(T)) 
     }
 }
 
-pub fn asum(comptime T: type, x: *matrix.Matrix(T)) T {
-    const n = @intCast(BlasInt, x.nrows);
+pub fn asum(comptime T: type, n: BlasInt, x: *matrix.Matrix(T), incx: BlasInt) T {
     if (T == f32) {
-        return c.cblas_sasum(n, x.data.ptr, 1);
+        return c.cblas_sasum(n, x.data.ptr, incx);
     } else if (T == f64) {
-        return c.cblas_dasum(n, x.data.ptr, 1);
+        return c.cblas_dasum(n, x.data.ptr, incx);
     } else if (T == Complex(f32)) {
-        return T.new(c.cblas_scasum(n, x.data.ptr, 1), 0.0);
+        return T.new(c.cblas_scasum(n, x.data.ptr, incx), 0.0);
     } else if (T == Complex(f64)) {
-        return T.new(c.cblas_dzasum(n, x.data.ptr, 1), 0.0);
+        return T.new(c.cblas_dzasum(n, x.data.ptr, incx), 0.0);
     }
 }
 
@@ -95,7 +94,7 @@ test "sdasum" {
         var vecX = try matrix.Matrix(T).initWithArray(&data_array_AB, 6, 1, allocator);
         defer vecX.free();
 
-        const sum = asum(T, &vecX);
+        const sum = asum(T, @intCast(BlasInt, vecX.nrows), &vecX, 1);
 
         std.testing.expect(sum == 21.0);
     }
@@ -109,7 +108,7 @@ test "scdzasum" {
         var vecX = try matrix.Matrix(T).initWithArray(&data_array_AB, 6, 1, allocator);
         defer vecX.free();
 
-        const sum = asum(T, &vecX);
+        const sum = asum(T, @intCast(BlasInt, vecX.nrows), &vecX, 1);
 
         std.testing.expect(sum.re == 42.0);
     }
